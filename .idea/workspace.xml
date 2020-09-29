@@ -10,10 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1da3e14b-c6a9-4752-a527-d6661483bfe7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Style_2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Chatapp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Chatapp.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,8 +232,23 @@
       <updated>1601057827215</updated>
       <workItem from="1601057828334" duration="7388000" />
       <workItem from="1601332570626" duration="339000" />
-      <workItem from="1601332938087" duration="5311000" />
+      <workItem from="1601332938087" duration="5618000" />
     </task>
+    <task id="LOCAL-00001" summary="Added bootsrap html, needs MIME for stylesheets">
+      <created>1601345384539</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601345384539</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added bootsrap html, needs MIME for stylesheets">
+      <created>1601345511898</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601345511898</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,10 +285,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1008" y="185" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1920.1040@0.0.1920.1040" timestamp="1601059986942" />
-    <state x="585" y="119" key="CommitChangelistDialog2" timestamp="1601345383615">
+    <state x="585" y="119" key="CommitChangelistDialog2" timestamp="1601345510859">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="585" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1601345383615" />
+    <state x="585" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1601345510859" />
     <state width="1293" height="281" key="GridCell.Tab.0.bottom" timestamp="1601065123736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
