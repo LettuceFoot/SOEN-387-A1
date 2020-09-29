@@ -9,12 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1da3e14b-c6a9-4752-a527-d6661483bfe7" name="Default Changelist" comment="Added bootsrap html, needs MIME for stylesheets">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+    <list default="true" id="1da3e14b-c6a9-4752-a527-d6661483bfe7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Chatapp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Chatapp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Chatapp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Chatapp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Style_2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Style_2.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +233,7 @@
       <workItem from="1601057828334" duration="7388000" />
       <workItem from="1601332570626" duration="339000" />
       <workItem from="1601332938087" duration="6366000" />
-      <workItem from="1601383069910" duration="4750000" />
+      <workItem from="1601383069910" duration="5015000" />
     </task>
     <task id="LOCAL-00001" summary="Added bootsrap html, needs MIME for stylesheets">
       <created>1601345384539</created>
@@ -260,11 +256,29 @@
       <option name="project" value="LOCAL" />
       <updated>1601345623626</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added bootsrap html, needs MIME for stylesheets">
+      <created>1601388045223</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1601388045223</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added bootsrap html, needs MIME for stylesheets" />
@@ -297,10 +311,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1008" y="185" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1920.1040@0.0.1920.1040" timestamp="1601059986942" />
-    <state x="585" y="119" key="CommitChangelistDialog2" timestamp="1601388019890">
+    <state x="585" y="119" key="CommitChangelistDialog2" timestamp="1601388041438">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="585" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1601388019890" />
+    <state x="585" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1601388041438" />
     <state width="1293" height="281" key="GridCell.Tab.0.bottom" timestamp="1601065123736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
