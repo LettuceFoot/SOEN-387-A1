@@ -9,8 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1da3e14b-c6a9-4752-a527-d6661483bfe7" name="Default Changelist" comment="">
+    <list default="true" id="1da3e14b-c6a9-4752-a527-d6661483bfe7" name="Default Changelist" comment="Added bootsrap html, needs MIME for stylesheets">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Chatapp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Chatapp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Chatapp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Chatapp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Style_2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Style_2.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,10 +69,10 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.37">
+  <component name="RunManager" selected="Tomcat Server.My server">
     <configuration name="My server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.38" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/A1_war/" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -232,7 +236,8 @@
       <updated>1601057827215</updated>
       <workItem from="1601057828334" duration="7388000" />
       <workItem from="1601332570626" duration="339000" />
-      <workItem from="1601332938087" duration="5618000" />
+      <workItem from="1601332938087" duration="6366000" />
+      <workItem from="1601383069910" duration="4750000" />
     </task>
     <task id="LOCAL-00001" summary="Added bootsrap html, needs MIME for stylesheets">
       <created>1601345384539</created>
@@ -248,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601345511898</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added bootsrap html, needs MIME for stylesheets">
+      <created>1601345623626</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1601345623626</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,11 +275,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#Notifications/0.0.1920.1050@0.0.1920.1050" timestamp="1601345299591" />
-    <state x="880" y="99" key="#Project_Structure" timestamp="1601340342287">
+    <state x="880" y="99" key="#Project_Structure" timestamp="1601386702379">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="880" y="98" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1601058091385" />
-    <state x="880" y="99" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1601340342287" />
+    <state x="880" y="99" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1601386702379" />
     <state x="657" y="135" key="#Tomcat_9.0.37" timestamp="1601332947398">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -285,10 +297,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1008" y="185" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1920.1040@0.0.1920.1040" timestamp="1601059986942" />
-    <state x="585" y="119" key="CommitChangelistDialog2" timestamp="1601345510859">
+    <state x="585" y="119" key="CommitChangelistDialog2" timestamp="1601388019890">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="585" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1601345510859" />
+    <state x="585" y="119" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1601388019890" />
     <state width="1293" height="281" key="GridCell.Tab.0.bottom" timestamp="1601065123736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -337,14 +349,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1293" height="281" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601065123649" />
-    <state x="656" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1601332938025">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1601345753756">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="656" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1601332938025" />
-    <state x="769" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601345446078">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1601345753756" />
+    <state x="656" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1601383068859">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="769" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050@0.0.1920.1050" timestamp="1601345446078" />
+    <state x="656" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1601383068859" />
+    <state x="769" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601383171448">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="769" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050@0.0.1920.1050" timestamp="1601383171448" />
     <state x="525" y="178" width="1235" height="694" key="new project wizard" timestamp="1601058335366">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

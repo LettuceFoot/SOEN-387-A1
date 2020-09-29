@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat App</title>
-    <!--    <link rel="stylesheet" href="Chatapp.css">-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<!--    <link href="Style_2.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="Chatapp.css">
+    <script src="https://kit.fontawesome.com/be7fa3ac62.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
@@ -33,6 +34,14 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
+            <li class="switcher">
+                <input type="checkbox" class="checkbox" id="checkbox">
+                <label for="checkbox" class="label">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <i class ="ball"></i>
+                </label>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropdown link
@@ -66,6 +75,8 @@
         </dl>
     </div>
 </div>
+
+
 
 <section id="forum-thread">
     <div class="card">
@@ -136,6 +147,14 @@
         <textarea class="form-control" aria-label="With textarea"></textarea>
     </div>
 </section>
+
+<script>
+    const checkbox = document.getElementById('checkbox');
+    checkbox.addEventListener('change',() => {
+        //    change theme
+        document.body.classList.toggle('dark');
+    });
+</script>
 
 
 <!--    <div>Welcome to the Chat room!</div>-->
