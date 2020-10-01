@@ -1,48 +1,98 @@
-.homepage {
+/*.homepage {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    flex-wrap: wrap;*/
+/*    width: 800px;*/
+/*    align-items: center;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*.chat {*/
+/*    border: 1px solid black;*/
+/*    width: 70%;*/
+/*    height: 700px;*/
+/*    overflow-y: scroll;*/
+/*    padding: 10px;*/
+/*    margin: 20px auto;*/
+/*}*/
+
+/*.message {*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*.messageText {*/
+/*    width: fit-content;*/
+/*    color: white;*/
+/*    border-radius: 10px;*/
+/*    padding: 2px 10px;*/
+/*}*/
+
+/*#user1 > span {*/
+/*    background-color: cornflowerblue;*/
+/*}*/
+
+/*#user2 > span {*/
+/*    background-color: indianred;*/
+/*}*/
+
+/*.btn {*/
+/*    background-color: black;*/
+/*    color: white;*/
+/*    border-radius: 5px;*/
+/*    width: 100px;*/
+/*    height: 25px;*/
+/*}*/
+
+/*.btn:hover {*/
+/*    background-color: blue;*/
+/*}*/
+.switcher{
+    padding-top: 7px;
+}
+
+*{
+    box-sizing: border-box;
+}
+body{
+    transition: background 1.3s linear
+}
+body.dark{
+    background-color: #292C35;
+    color: gray;
+}
+.label{
+    background-color: #111111;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 800px;
     align-items: center;
-    margin: 0 auto;
-}
+    justify-content: space-between;
+    padding: 5px;
+    height: 26px;
+    width: 50px;
+    border-radius: 50px;
+    position:relative;
 
-.chat {
-    border: 1px solid black;
-    width: 70%;
-    height: 700px;
-    overflow-y: scroll;
-    padding: 10px;
-    margin: 20px auto;
 }
+.ball{
+    width: 22px;
+    height: 22px;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    transition: transform 0.2s linear;
 
-.message {
-    margin-top: 20px;
 }
-
-.messageText {
-    width: fit-content;
-    color: white;
-    border-radius: 10px;
-    padding: 2px 10px;
+.checkbox{
+    opacity: 0;
+    position: absolute;
 }
-
-#user1 > span {
-    background-color: cornflowerblue;
+.checkbox:checked + .label .ball{
+    transform: translateX(24px);
 }
-
-#user2 > span {
-    background-color: indianred;
+.fa-moon{
+    color: goldenrod;
 }
-
-.btn {
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    width: 100px;
-    height: 25px;
-}
-
-.btn:hover {
-    background-color: blue;
+.fa-sun{
+    color: goldenrod;
 }
