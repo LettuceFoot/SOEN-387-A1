@@ -20,16 +20,24 @@ public class ChatServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //set response content type
-        response.setContentType("text/html");
+       //if the submit button with name "delete" was submitted, forward to the delete servlet
+        if(request.getParameter("delete") != null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DeleteServlet");
+            dispatcher.forward(request, response);
+        }else{
+            //set response content type
+            response.setContentType("text/html");
 
-        //get message that was sent
-        String userMessage = request.getParameter("message");
 
-        //send response to front-end
-        RequestDispatcher dispatcher = request.getRequestDispatcher("testing.jsp");
-        request.setAttribute("out", userMessage);
-        dispatcher.forward(request, response);
+            //get message that was sent
+            String userMessage = request.getParameter("message");
+
+            //send response to front-end
+            RequestDispatcher dispatcher = request.getRequestDispatcher("testing.jsp");
+            request.setAttribute("out", userMessage);
+            dispatcher.forward(request, response);
+        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
