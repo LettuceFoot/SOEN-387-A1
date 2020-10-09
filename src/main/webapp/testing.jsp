@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: alway
+  Date: 2020-10-01
+  Time: 3:48 p.m.
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,24 +84,32 @@
     </div>
 </div>
 
+<jsp:useBean id="chat" scope="session" class="beans.ChatBean" />
+    <%-- THis compiles fine --%>
+<jsp:setProperty name="chat" property="date" value="<%= request.getAttribute(\"date\").toString() %>" />
+<jsp:setProperty name="chat" property="username" value="<%= request.getAttribute(\"username\").toString() %>" />
+<jsp:setProperty name="chat" property="msg" value="<%= request.getAttribute(\"msg\").toString() %>" />
+<jsp:setProperty name="chat" property="clear" value="<%= request.getAttribute(\"clear\").toString() %>" />
+
 
 
 <section id="forum-thread">
-    <div class="card">
-        <h4>Person 1 posted:</h4>
-        <div class="card-body">
-            This is some text within a card body.
-        </div>
-        <hr>
-    </div>
+    ${chat.printDb()}
+    <%--    <div class="card">--%>
+<%--        <h4>Person 1 posted:</h4>--%>
+<%--        <div class="card-body">--%>
+<%--            ${chat.printDb()}--%>
+<%--        </div>--%>
+<%--        <hr>--%>
+<%--    </div>--%>
 
-<!--    <div class="card">-->
-<!--        <h4>Person 1 posted:</h4>-->
-<!--        <div class="card-body">-->
-<!--            This is some text within a card body.-->
-<!--        </div>-->
-<!--        <hr>-->
-<!--    </div>-->
+    <!--    <div class="card">-->
+    <!--        <h4>Person 1 posted:</h4>-->
+    <!--        <div class="card-body">-->
+    <!--            This is some text within a card body.-->
+    <!--        </div>-->
+    <!--        <hr>-->
+    <!--    </div>-->
 
     <div class="chatActions">
         <h4>person 2</h4>
@@ -116,6 +132,7 @@
     </div>
 </section>
 <hr>
+
 <script>
     const checkbox = document.getElementById('checkbox');
     checkbox.addEventListener('change',() => {
