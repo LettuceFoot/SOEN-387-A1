@@ -9,7 +9,7 @@ public class ChatBean implements java.io.Serializable {
     private String username;
     private String date;
     private String clear = "False";
-    private List<String> db = new ArrayList<String>();
+    private static List<String> db = new ArrayList<String>();
 
 
     public ChatBean(){
