@@ -84,13 +84,16 @@
     </div>
 </div>
 
+<jsp:useBean id="chat" scope="session" class="beans.ChatBean" />
+    <%-- THis compiles fine --%>
+<jsp:setProperty name="chat" property="msg" value="<%= request.getAttribute(\"out\").toString() %>" />
 
 
 <section id="forum-thread">
     <div class="card">
         <h4>Person 1 posted:</h4>
         <div class="card-body">
-            <%= request.getAttribute("out") %>
+            ${chat.printDb()}
         </div>
         <hr>
     </div>
