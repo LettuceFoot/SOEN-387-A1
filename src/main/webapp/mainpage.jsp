@@ -60,9 +60,9 @@
         </ul>
     </div>
 </nav>
-
+<div id="divReverse">
 <section id="forum-thread">
-    <div id="firstCont" class="jumbotron jumbotron-fluid">
+    <div id="firstCont" class="divContainer jumbotron jumbotron-fluid">
         <div class="container">
             <div id=chatBox class="card">
                 <h4>Person 1 posted:</h4>
@@ -74,7 +74,7 @@
         </div>
     </div>
     <div class="chatActions">
-        <div id="secondCont" class="jumbotron jumbotron-fluid">
+        <div id="secondCont" class="divContainer jumbotron jumbotron-fluid">
             <div class="container">
                 <form class="messageSubmit" action="ChatServlet" method="POST">
                     <label for="messageBox"></label>
@@ -104,6 +104,7 @@
         </div>
     </div>
 </section>
+</div>
 <hr>
 <script>
     const checkbox = document.getElementById('checkbox');
@@ -115,8 +116,9 @@
         document.getElementById("chatBox").classList.toggle("darkBox");
         document.getElementById("messageBox").classList.toggle("darkBox");
         document.getElementById("downloadLink").classList.toggle("darkLink");
-        // document.getElementById("firstCont").classList.toggle("firstContPos");
-        // document.getElementById("secondCont").classList.toggle("secondContPos");
+        document.getElementById("firstCont").classList.toggle("firstContPos");
+        document.getElementById("secondCont").classList.toggle("secondContPos");
+        document.getElementById("divReverse").classList.toggle("divLefty");
     });
 </script>
 </body>
