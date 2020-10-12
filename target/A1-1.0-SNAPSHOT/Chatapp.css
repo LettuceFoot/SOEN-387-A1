@@ -96,3 +96,22 @@ body.dark{
 .fa-sun{
     color: goldenrod;
 }
+#jumbo{
+    margin-top: 250px;
+    background-color: transparent;
+}
+#name{
+    margin-bottom: 30px;
+}
+#btn{
+    margin-top: 60px;
+}
+#bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
