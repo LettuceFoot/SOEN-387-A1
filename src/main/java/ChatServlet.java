@@ -1,4 +1,6 @@
-import sun.misc.Request;
+// import sun.misc.Request;
+
+import beans.ChatBean;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
@@ -9,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -42,6 +46,47 @@ public class ChatServlet extends HttpServlet {
 
             //clear or download message
             String chatAction = request.getParameter("chatAction");
+            if(chatAction.equals("Download")){
+                String fileName = "";
+                String fileExtension = ".txt";
+                String fileType = "text/plain";   //set txt by default
+
+                //we need a way to retreive the filetype the user requested (txt or xml)
+
+                // You must tell the browser the file type you are going to send
+                // for example application/pdf, text/plain, text/html, image/jpg
+                response.setContentType(fileType);
+
+                // Make sure to show the download dialog
+                String headerkey = "Content-disposition";
+                String headerVal = "attachment; filename=Chat." + fileExtension;
+                response.setHeader(headerkey,headerVal);
+
+                OutputStream out = response.getOutputStream();
+
+                ChatBean temp = new ChatBean();
+                String msg = temp.printDb();
+
+                out.write(msg.getBytes(Charset.forName("UTF-8")));
+                // Assume file name is retrieved from database
+                // For example D:\\file\\test.pdf
+
+                /*
+                File my_file = new File(fileName);
+
+                // This should send the file to browser
+                OutputStream out = response.getOutputStream();
+                FileInputStream in = new FileInputStream(my_file);
+                byte[] buffer = new byte[4096];
+                int length;
+                while ((length = in.read(buffer)) > 0){
+                    out.write(buffer, 0, length);
+                }
+                in.close();*/
+                out.flush();
+                out.close();
+            }
+
             if (chatAction.equals("Clear")) {
                 request.setAttribute("clear", "True");
             }else {
@@ -73,6 +118,9 @@ public class ChatServlet extends HttpServlet {
         } catch (IOException exception){
             exception.getMessage();
         }
+
+
+
 
     }
 }
