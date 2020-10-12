@@ -1,6 +1,5 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Bahenduzi
   Date: 2020-10-11
   Time: 5:03 p.m.
   To change this template use File | Settings | File Templates.
@@ -23,7 +22,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 <div class="mx-auto order-0">
-    <a class="navbar-brand mx-auto d-flex justify-content-center" href="#">ChatApp</a>
+    <a class="navbar-brand mx-auto d-flex justify-content-center" href="welcome.jsp">ChatApp</a>
 </div>
 </nav>
 <div id="jumbo" class="jumbotron jumbotron-fluid">
@@ -46,7 +45,7 @@
             </section>
         </div>
         <div id="btn" class="container text-center">
-            <a class="btn btn-outline-dark btn-lg" href="Chatapp.html" role="button">Join the chat</a>
+            <a class="btn btn-outline-dark btn-lg" href="mainpage.jsp" role="button">Join the chat</a>
         </div>
     </div>
 </div>

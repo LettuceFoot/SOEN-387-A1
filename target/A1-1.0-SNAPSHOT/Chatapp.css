@@ -54,12 +54,14 @@
     box-sizing: border-box;
 }
 body{
-    transition: background 1.3s linear
+    transition: background 0.8s linear;
+    background-color:#F6F6F6;
 }
 body.dark{
     background-color: #292C35;
     color: gray;
 }
+
 .label{
     background-color: #111111;
     display: flex;
@@ -103,9 +105,48 @@ body.dark{
 #name{
     margin-bottom: 30px;
 }
+#chatBox{
+    height: 600px;
+}
+#firstCont{
+    background-color: transparent;
+    /*max-height: 80%;*/
+}
+#secondCont{
+    background-color: transparent;
+    margin-bottom:150px;
+}
+.firstContPos{
+    bottom: 500px;
+    z-index: -1;
+}
+.secondContPos{
+   top: 500px;
+}
 #btn{
     margin-top: 60px;
 }
+.chatButtons{
+    margin-left: 30px;
+}
+.btn.dark{
+    background-color: #FFD5D5;
+    color:#292C35;
+}
+.btn.darkLink{
+    background-color: #FFD5D5;
+    /*color:#FFD5D5;*/
+    padding: 10px 20px;
+    font-size: 20px;
+}
+.darkBox{
+    background-color: #FAFAFA;
+}
+#downloadBtn{
+    margin-right: 30px;
+    /*background-color: pink;*/
+}
+
 #bg{
     position: fixed;
     top: 0;
@@ -114,4 +155,10 @@ body.dark{
     min-height: 100%;
     z-index: -1;
 }
+#downloadLink{
+    color:#292C35;
+    font-size: 20px;
+}
+
+
 
