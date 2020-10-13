@@ -69,7 +69,9 @@ public class ChatBean implements java.io.Serializable {
                 String userDate = temp.substring(0, temp.indexOf("Username:"));
                 userDate = userDate.replace("Date: ", "");
 
-                out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                if (userMsg.length() > 0) {
+                    out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                }
             }
         }else {
             db.clear();

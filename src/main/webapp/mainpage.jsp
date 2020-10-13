@@ -63,7 +63,7 @@
 
 <jsp:useBean id="chat" scope="session" class="beans.ChatBean" />
 <%-- THis compiles fine --%>
-<jsp:setProperty name="chat" property="date" value="<%= request.getAttribute(\"date\").toString() %>" />
+<% if (request.getAttribute("date") != null) { %> <jsp:setProperty name="chat" property="date" value="<%= request.getAttribute(\"date\").toString() %>" /> <% }%>
 <% if (request.getAttribute("username") != null) { %> <jsp:setProperty name="chat" property="username" value="<%= request.getAttribute(\"username\").toString() %>" /> <% }%>
 <% if (request.getAttribute("msg") != null) { %> <jsp:setProperty name="chat" property="msg" value="<%= request.getAttribute(\"msg\").toString() %>" /> <% }%>
 <% if (request.getAttribute("clear") != null) { %> <jsp:setProperty name="chat" property="clear" value="<%= request.getAttribute(\"clear\").toString() %>" /> <% }%>
@@ -73,7 +73,6 @@
         <div class="container">
             ${chat.printDb()}
             <hr>
-
         </div>
     </div>
 
@@ -83,6 +82,7 @@
                 <form class="messageSubmit" action="ChatServlet" method="POST">
                     <label for="messageBox"></label>
                     <div class="chatButtons d-flex justify-content-center">
+                        <input name="username" value="<%= request.getAttribute("username") %>">
                         <div>
                             <textarea id="messageBox" name="message" placeholder="Type your message..." rows="2" cols="120"></textarea>
                         </div>
@@ -101,7 +101,8 @@
                                 <a class="dropdown-item" href="#">XML file</a>
                             </div>
                         </div>
-                        <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Clear Chat">
+                        <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Clear">
+                        <input id="refreshBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Refresh">
                     </div>
                 </form>
             </div>
