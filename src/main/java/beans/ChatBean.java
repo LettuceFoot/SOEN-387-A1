@@ -221,12 +221,11 @@ public class ChatBean implements java.io.Serializable {
                 e.printStackTrace();
             }
 
-            //if we're looking for the TO range, and we hit the end of the list, return the last index
-            if(i == db.size() -1 && !fromTo) return i;
+
 
             // if userDate > msgDate
             if(userDate.compareTo(msgDate) > 0){
-                continue;
+                
             }else{
                if(fromTo){
                    return i;
@@ -235,7 +234,8 @@ public class ChatBean implements java.io.Serializable {
                }
             }
 
-
+            //if we're looking for the TO range, and we hit the end of the list, return the last index
+            if(i == db.size() -1 && !fromTo) return i;
 
           /* if(fromTo){
                if(userDate.compareTo(msgDate) > 0){
