@@ -99,7 +99,7 @@
                                 Download Chat
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="ChatServlet?format=text/plain">Text file</a>
+                                <a class="dropdown-item" href="ChatServlet?format=text/plain&fromDate=<%if (chat.getFromDate() != null) {%><%= chat.getFromDate() %><%}%>&toDate=<%if (chat.getToDate() != null) {%><%= chat.getToDate()%><%}%>">Text file</a>
                                 <a class="dropdown-item" href="ChatServlet?format=text/xml">XML file</a>
                             </div>
                         </div>
@@ -113,6 +113,7 @@
                                 <span>To:</span>
                                 <input name="toDate" value="<%if (chat.getToDate() != null) {%><%= chat.getToDate()%><%}%>" placeholder="d-m-y hh:mm:ss">
                             </div>
+                            <input id="setDateRangebtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="setDateRange">
                         </div>
                         <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Clear">
                         <input id="refreshBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Refresh">

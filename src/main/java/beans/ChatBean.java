@@ -19,8 +19,8 @@ public class ChatBean implements java.io.Serializable {
     private String date;
     private static String clear = "False";
     private String dateRange;
-    private String fromDate;
-    private String toDate;
+    private static String fromDate;
+    private static String toDate;
 
     private static List<String> db = new ArrayList<String>();
     //private static List<Date> dateDB = new ArrayList<Date>();
@@ -34,10 +34,12 @@ public class ChatBean implements java.io.Serializable {
     public int getId(){return id;}
 
     public void setMsg(String msg){
-        this.msg = msg;
-        this.db.add("Date: " + date + " Username: " + username + " Message: " + this.msg);
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
-        Date Tdate = null;
+        if (msg.length() > 0) {
+            this.msg = msg;
+            this.db.add("Date: " + date + " Username: " + username + " Message: " + this.msg);
+            DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
+            Date Tdate = null;
+        }
 /*
         try {
             Tdate = format.parse(date);
@@ -76,7 +78,7 @@ public class ChatBean implements java.io.Serializable {
         fromDate = date;
     }
 
-    public String getFromDate() {
+    public static String getFromDate() {
         return fromDate;
     }
 
@@ -84,7 +86,7 @@ public class ChatBean implements java.io.Serializable {
         toDate = date;
     }
 
-    public String getToDate() {
+    public static String getToDate() {
         return toDate;
     }
 
@@ -136,24 +138,24 @@ public class ChatBean implements java.io.Serializable {
 
                 if (userMsg.length() > 0) {
                     if (toDate.length() == 0 && fromDate.length() == 0) {
-                        out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                        out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                     }
 
                     if (toDate.length() != 0 && fromDate.length() == 0) {
                         if (userDateFormat.before(toDateFormat)){
-                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
 
                     if (toDate.length() == 0 && fromDate.length() != 0) {
                         if (userDateFormat.after(fromDateFormat)){
-                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
 
                     if (toDate.length() != 0 && fromDate.length() != 0){
                         if (userDateFormat.after(fromDateFormat) && userDateFormat.before(toDateFormat)){
-                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
                 }
@@ -219,12 +221,11 @@ public class ChatBean implements java.io.Serializable {
                 e.printStackTrace();
             }
 
-            //if we're looking for the TO range, and we hit the end of the list, return the last index
-            if(i == db.size() -1 && !fromTo) return i;
+
 
             // if userDate > msgDate
             if(userDate.compareTo(msgDate) > 0){
-                continue;
+                
             }else{
                if(fromTo){
                    return i;
@@ -233,7 +234,8 @@ public class ChatBean implements java.io.Serializable {
                }
             }
 
-
+            //if we're looking for the TO range, and we hit the end of the list, return the last index
+            if(i == db.size() -1 && !fromTo) return i;
 
           /* if(fromTo){
                if(userDate.compareTo(msgDate) > 0){
