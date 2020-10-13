@@ -97,8 +97,8 @@
                                 Download Chat
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Text file</a>
-                                <a class="dropdown-item" href="#">XML file</a>
+                                <a class="dropdown-item" href="ChatServlet?format=text/plain">Text file</a>
+                                <a class="dropdown-item" href="ChatServlet?format=text/xml">XML file</a>
                             </div>
                         </div>
                         <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Clear">

@@ -124,29 +124,21 @@ public class ChatServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     /* try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChatApp</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ChatApp at " + request.getContextPath() + "</h1>");
-            out.println("<h1>" + mymsg + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } catch (IOException exception){
-            exception.getMessage();
-        }*/
-        download("","","",response);
+        String format = "";
+        String from = "";
+        String to = "";
+
+        format = request.getParameter("format");
+
+        download(from,to,format,response);
 
     }
     private boolean download(String from, String to, String format,HttpServletResponse response){
 
         String fileExtension = ".txt";
+        String msg = null;
 
-
-        if(format == null || !format.equals("text/plain") || !format.equals("text/xml")){
+        if(format == null || !format.equals("text/plain") && !format.equals("text/xml")){
             format = "text/plain";
         }
 
@@ -167,9 +159,14 @@ public class ChatServlet extends HttpServlet {
         try {
             out = response.getOutputStream();
 
-            ChatBean temp = new ChatBean();
-            temp.setClear("false");
-            String msg = ChatBean.printTxt("","");
+            //ChatBean temp = new ChatBean();
+            //temp.setClear("false");
+
+            if(format.equals("text/xml")){
+                msg = ChatBean.printDb();
+            }else{
+                msg = ChatBean.printTxt(from,to);
+            }
 
             out.write(msg.getBytes(Charset.forName("UTF-8")));
 

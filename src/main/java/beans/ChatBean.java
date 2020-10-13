@@ -15,7 +15,7 @@ public class ChatBean implements java.io.Serializable {
     private String msg;
     private String username;
     private String date;
-    private String clear = "False";
+    private static String clear = "False";
     private static List<String> db = new ArrayList<String>();
     //private static List<Date> dateDB = new ArrayList<Date>();
 
@@ -29,7 +29,7 @@ public class ChatBean implements java.io.Serializable {
 
     public void setMsg(String msg){
         this.msg = msg;
-        this.db.add("Date: " + date + "Username: " + username + "Message: " + this.msg);
+        this.db.add("Date: " + date + " Username: " + username + " Message: " + this.msg);
         DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
         Date Tdate = null;
 /*
@@ -72,11 +72,11 @@ public class ChatBean implements java.io.Serializable {
     //public void setDateDB(List<Date> in){this.dateDB = in;}
     //public List<Date> getDateDB(){return this.dateDB;}
 
-    public String printDb(){
+    public static String printDb(){
         String out = "";
         String temp = "";
 
-        if (clear.equals("False")) {
+        if (clear.equalsIgnoreCase("False")) {
             for(int i=0; i<db.size(); i++){
                 temp = db.get(i);
 
@@ -109,7 +109,7 @@ public class ChatBean implements java.io.Serializable {
         if(Sindex == -1 || Eindex == -1) return out;
 
         for(int i = Sindex ; i <= Eindex; i++){
-            out += db.get(i) + "/n";
+            out += db.get(i) + "\n";
         }
         return out;
     }
