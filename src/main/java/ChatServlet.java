@@ -34,10 +34,15 @@ public class ChatServlet extends HttpServlet {
             //set response content type
             response.setContentType("text/html");
 
-
             //get message that was sent and username
             String userMessage = request.getParameter("message");
             String userName = request.getParameter("username");
+
+            if (userName == null || userName == "") {
+                userName = "anonymous";
+            }
+
+            System.out.println(userName);
 
             //getting date of the message
             LocalDateTime dateTimeObj = LocalDateTime.now();
@@ -95,12 +100,25 @@ public class ChatServlet extends HttpServlet {
                 }
             }
 
-            //send response to front-end
-            RequestDispatcher dispatcher = request.getRequestDispatcher("mainpage.jsp");
-            request.setAttribute("msg", userMessage);
-            request.setAttribute("username", userName);
-            request.setAttribute("date", date);
-            dispatcher.forward(request, response);
+            //checking status code for errors
+            int status_code = response.getStatus();
+            //get first digit of the status code
+            while (status_code >= 10) {
+                status_code /= 10;
+            }
+
+            if (status_code == 4 || status_code == 5) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
+                request.setAttribute("error_message", "error encountered when attempting to post a message please login again");
+                dispatcher.forward(request, response);
+            }else {
+                //send response to front-end
+                RequestDispatcher dispatcher = request.getRequestDispatcher("mainpage.jsp");
+                request.setAttribute("msg", userMessage);
+                request.setAttribute("username", userName);
+                request.setAttribute("date", date);
+                dispatcher.forward(request, response);
+            }
         }
 
     }

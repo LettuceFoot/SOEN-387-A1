@@ -30,6 +30,7 @@
         <div class="container">
             <h1 id="name" class="display-4 text-center">Welcome to ChatApp!</h1>
             <p class="lead text-center">A chatroom for everyone.</p>
+            <% if (request.getAttribute("error_message") != null) { %> <%= request.getAttribute("error_message") %> <%}%>
             <hr class="my-4">
             <dl>
                 <dt>Enter your name</dt>
