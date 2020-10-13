@@ -60,19 +60,23 @@
         </ul>
     </div>
 </nav>
+
+<jsp:useBean id="chat" scope="session" class="beans.ChatBean" />
+<%-- THis compiles fine --%>
+<jsp:setProperty name="chat" property="date" value="<%= request.getAttribute(\"date\").toString() %>" />
+<% if (request.getAttribute("username") != null) { %> <jsp:setProperty name="chat" property="username" value="<%= request.getAttribute(\"username\").toString() %>" /> <% }%>
+<% if (request.getAttribute("msg") != null) { %> <jsp:setProperty name="chat" property="msg" value="<%= request.getAttribute(\"msg\").toString() %>" /> <% }%>
+<% if (request.getAttribute("clear") != null) { %> <jsp:setProperty name="chat" property="clear" value="<%= request.getAttribute(\"clear\").toString() %>" /> <% }%>
 <div id="divReverse">
 <section id="forum-thread">
     <div id="firstCont" class="divContainer jumbotron jumbotron-fluid">
         <div class="container">
-            <div id=chatBox class="card">
-                <h4>Person 1 posted:</h4>
-                <div class="card-body">
-                    This is some text within a card body.
-                </div>
-                <hr>
-            </div>
+            ${chat.printDb()}
+            <hr>
+
         </div>
     </div>
+
     <div class="chatActions">
         <div id="secondCont" class="divContainer jumbotron jumbotron-fluid">
             <div class="container">

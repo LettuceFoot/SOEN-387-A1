@@ -26,28 +26,29 @@
 </div>
 </nav>
 <div id="jumbo" class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 id="name" class="display-4 text-center">Welcome to ChatApp!</h1>
-        <p class="lead text-center">A chatroom for everyone.</p>
-        <hr class="my-4">
-        <dl>
-            <dt>Enter your name</dt>
-        </dl>
-        <div class="chatActions">
-            <form class="messageSubmit" action="ChatServlet" method="POST"></form>
-            <section id="forum-posts">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">@</span>
+    <form class="messageSubmit" action="ChatServlet" method="POST">
+        <div class="container">
+            <h1 id="name" class="display-4 text-center">Welcome to ChatApp!</h1>
+            <p class="lead text-center">A chatroom for everyone.</p>
+            <hr class="my-4">
+            <dl>
+                <dt>Enter your name</dt>
+            </dl>
+            <div class="chatActions">
+                <section id="forum-posts">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
-                    <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </section>
+                </section>
+            </div>
+            <div id="btn" class="container text-center">
+                <input id="submitBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" value="Join the chat">
+            </div>
         </div>
-        <div id="btn" class="container text-center">
-            <a class="btn btn-outline-dark btn-lg" href="mainpage.jsp" role="button">Join the chat</a>
-        </div>
-    </div>
+    </form>
 </div>
 </body>
 </html>
