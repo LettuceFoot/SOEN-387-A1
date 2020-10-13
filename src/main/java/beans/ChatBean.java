@@ -19,8 +19,8 @@ public class ChatBean implements java.io.Serializable {
     private String date;
     private static String clear = "False";
     private String dateRange;
-    private String fromDate;
-    private String toDate;
+    private static String fromDate;
+    private static String toDate;
 
     private static List<String> db = new ArrayList<String>();
     //private static List<Date> dateDB = new ArrayList<Date>();
@@ -34,10 +34,12 @@ public class ChatBean implements java.io.Serializable {
     public int getId(){return id;}
 
     public void setMsg(String msg){
-        this.msg = msg;
-        this.db.add("Date: " + date + " Username: " + username + " Message: " + this.msg);
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
-        Date Tdate = null;
+        if (msg.length() > 0) {
+            this.msg = msg;
+            this.db.add("Date: " + date + " Username: " + username + " Message: " + this.msg);
+            DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
+            Date Tdate = null;
+        }
 /*
         try {
             Tdate = format.parse(date);
@@ -76,7 +78,7 @@ public class ChatBean implements java.io.Serializable {
         fromDate = date;
     }
 
-    public String getFromDate() {
+    public static String getFromDate() {
         return fromDate;
     }
 
@@ -84,7 +86,7 @@ public class ChatBean implements java.io.Serializable {
         toDate = date;
     }
 
-    public String getToDate() {
+    public static String getToDate() {
         return toDate;
     }
 

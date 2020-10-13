@@ -38,6 +38,9 @@ public class ChatServlet extends HttpServlet {
             String userMessage = request.getParameter("message");
             String userName = request.getParameter("username");
 
+            String fromDate = "";
+            String toDate = "";
+
             if (userName == null || userName == "") {
                 userName = "anonymous";
             }
@@ -52,57 +55,19 @@ public class ChatServlet extends HttpServlet {
             //clear or download message
             String chatAction = request.getParameter("chatAction");
             if (chatAction != null) {
-                if (chatAction.equals("Download")) {
-                    String fileName = "";
-                    String fileExtension = ".txt";
-                    String fileType = "text/plain";   //set txt by default
-
-                    //we need a way to retreive the filetype the user requested (txt or xml)
-
-                    // You must tell the browser the file type you are going to send
-                    // for example application/pdf, text/plain, text/html, image/jpg
-                    response.setContentType(fileType);
-
-                    // Make sure to show the download dialog
-                    String headerkey = "Content-disposition";
-                    String headerVal = "attachment; filename=Chat." + fileExtension;
-                    response.setHeader(headerkey, headerVal);
-
-                    OutputStream out = response.getOutputStream();
-
-                    ChatBean temp = new ChatBean();
-                    String msg = temp.printDb();
-
-                    out.write(msg.getBytes(Charset.forName("UTF-8")));
-                    // Assume file name is retrieved from database
-                    // For example D:\\file\\test.pdf
-
-                    /*
-                    File my_file = new File(fileName);
-
-                    // This should send the file to browser
-                    OutputStream out = response.getOutputStream();
-                    FileInputStream in = new FileInputStream(my_file);
-                    byte[] buffer = new byte[4096];
-                    int length;
-                    while ((length = in.read(buffer)) > 0){
-                        out.write(buffer, 0, length);
-                    }
-                    in.close();*/
-                    out.flush();
-                    out.close();
-                }
-
                 if (chatAction.equals("Clear")) {
                     request.setAttribute("clear", "True");
                 } else {
                     request.setAttribute("clear", "False");
                 }
+
+                if (chatAction.equals("setDateRange")) {
+                    //getting date range
+;                   fromDate = request.getParameter("fromDate");
+                    toDate = request.getParameter("toDate");
+                }
             }
 
-            //getting date range
-            String fromDate = request.getParameter("fromDate");
-            String toDate = request.getParameter("toDate");
 
             //checking status code for errors
             int status_code = response.getStatus();
@@ -135,6 +100,8 @@ public class ChatServlet extends HttpServlet {
         String to = "";
 
         format = request.getParameter("format");
+        from = request.getParameter("fromDate");
+        to = request.getParameter("toDate");
 
         download(from,to,format,response);
 
