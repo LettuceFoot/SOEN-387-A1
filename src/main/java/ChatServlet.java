@@ -100,6 +100,10 @@ public class ChatServlet extends HttpServlet {
                 }
             }
 
+            //getting date range
+            String fromDate = request.getParameter("fromDate");
+            String toDate = request.getParameter("toDate");
+
             //checking status code for errors
             int status_code = response.getStatus();
             //get first digit of the status code
@@ -117,6 +121,8 @@ public class ChatServlet extends HttpServlet {
                 request.setAttribute("msg", userMessage);
                 request.setAttribute("username", userName);
                 request.setAttribute("date", date);
+                request.setAttribute("fromDate", fromDate);
+                request.setAttribute("toDate", toDate);
                 dispatcher.forward(request, response);
             }
         }

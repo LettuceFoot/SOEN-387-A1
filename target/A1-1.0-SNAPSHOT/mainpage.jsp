@@ -67,6 +67,8 @@
 <% if (request.getAttribute("username") != null) { %> <jsp:setProperty name="chat" property="username" value="<%= request.getAttribute(\"username\").toString() %>" /> <% }%>
 <% if (request.getAttribute("msg") != null) { %> <jsp:setProperty name="chat" property="msg" value="<%= request.getAttribute(\"msg\").toString() %>" /> <% }%>
 <% if (request.getAttribute("clear") != null) { %> <jsp:setProperty name="chat" property="clear" value="<%= request.getAttribute(\"clear\").toString() %>" /> <% }%>
+<% if (request.getAttribute("fromDate") != null) { %> <jsp:setProperty name="chat" property="fromDate" value="<%= request.getAttribute(\"fromDate\").toString() %>" /> <% }%>
+<% if (request.getAttribute("toDate") != null) { %> <jsp:setProperty name="chat" property="toDate" value="<%= request.getAttribute(\"toDate\").toString() %>" /> <% }%>
 <div id="divReverse">
 <section id="forum-thread">
     <div id="firstCont" class="divContainer jumbotron jumbotron-fluid">
@@ -99,6 +101,24 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Text file</a>
                                 <a class="dropdown-item" href="#">XML file</a>
+                            </div>
+                        </div>
+<%--                        <div class="nav-item dropdown">--%>
+<%--                            <label for="dateRange">Date Range: </label>--%>
+<%--                            <select id="dateRange" name="dateRange">--%>
+<%--                                <option value="all" <% if (chat.getDateRange().equals("all")) { %> selected <%}%>>all messages</option>--%>
+<%--                                <option value="1_min" <% if (chat.getDateRange().equals("1_min")) { %> selected <%}%>>1 minute</option>--%>
+<%--                            </select>--%>
+<%--                        </div>--%>
+                        <div>
+                            <span>Date Range:</span>
+                            <div>
+                                <span>From:</span>
+                                <input name="fromDate" value="<%if (chat.getFromDate() != null) {%><%= chat.getFromDate() %><%}%>" placeholder="d-m-y hh:mm:ss">
+                            </div>
+                            <div>
+                                <span>To:</span>
+                                <input name="toDate" value="<%if (chat.getToDate() != null) {%><%= chat.getToDate()%><%}%>" placeholder="d-m-y hh:mm:ss">
                             </div>
                         </div>
                         <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Clear">

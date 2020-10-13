@@ -67,6 +67,8 @@
 <% if (request.getAttribute("username") != null) { %> <jsp:setProperty name="chat" property="username" value="<%= request.getAttribute(\"username\").toString() %>" /> <% }%>
 <% if (request.getAttribute("msg") != null) { %> <jsp:setProperty name="chat" property="msg" value="<%= request.getAttribute(\"msg\").toString() %>" /> <% }%>
 <% if (request.getAttribute("clear") != null) { %> <jsp:setProperty name="chat" property="clear" value="<%= request.getAttribute(\"clear\").toString() %>" /> <% }%>
+<% if (request.getAttribute("fromDate") != null) { %> <jsp:setProperty name="chat" property="fromDate" value="<%= request.getAttribute(\"fromDate\").toString() %>" /> <% }%>
+<% if (request.getAttribute("toDate") != null) { %> <jsp:setProperty name="chat" property="toDate" value="<%= request.getAttribute(\"toDate\").toString() %>" /> <% }%>
 <div id="divReverse">
 <section id="forum-thread">
     <div id="firstCont" class="divContainer jumbotron jumbotron-fluid">
@@ -99,6 +101,17 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="ChatServlet?format=text/plain">Text file</a>
                                 <a class="dropdown-item" href="ChatServlet?format=text/xml">XML file</a>
+                            </div>
+                        </div>
+                        <div>
+                            <span>Date Range:</span>
+                            <div>
+                                <span>From:</span>
+                                <input name="fromDate" value="<%if (chat.getFromDate() != null) {%><%= chat.getFromDate() %><%}%>" placeholder="d-m-y hh:mm:ss">
+                            </div>
+                            <div>
+                                <span>To:</span>
+                                <input name="toDate" value="<%if (chat.getToDate() != null) {%><%= chat.getToDate()%><%}%>" placeholder="d-m-y hh:mm:ss">
                             </div>
                         </div>
                         <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Clear">
