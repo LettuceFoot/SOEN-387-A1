@@ -130,23 +130,78 @@ public class ChatServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChatApp</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ChatApp at " + request.getContextPath() + "</h1>");
-            out.println("<h1>" + mymsg + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } catch (IOException exception){
-            exception.getMessage();
+        String format = "";
+        String from = "";
+        String to = "";
+
+        format = request.getParameter("format");
+
+        download(from,to,format,response);
+
+    }
+    private boolean download(String from, String to, String format,HttpServletResponse response){
+
+        String fileExtension = ".txt";
+        String msg = null;
+
+        if(format == null || !format.equals("text/plain") && !format.equals("text/xml")){
+            format = "text/plain";
+        }
+
+        if(format.equals("text/xml")) fileExtension = ".xml";
+
+        //we need a way to retreive the filetype the user requested (txt or xml)
+
+        // You must tell the browser the file type you are going to send
+        // for example application/pdf, text/plain, text/html, image/jpg
+        response.setContentType(format);
+
+        // Make sure to show the download dialog
+        String headerkey = "Content-disposition";
+        String headerVal = "attachment; filename=Chat." + fileExtension;
+        response.setHeader(headerkey,headerVal);
+
+        OutputStream out = null;
+        try {
+            out = response.getOutputStream();
+
+            //ChatBean temp = new ChatBean();
+            //temp.setClear("false");
+
+            if(format.equals("text/xml")){
+                msg = ChatBean.printDb();
+            }else{
+                msg = ChatBean.printTxt(from,to);
+            }
+
+            out.write(msg.getBytes(Charset.forName("UTF-8")));
+
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 
 
 
+        // Assume file name is retrieved from database
+        // For example D:\\file\\test.pdf
+
+                /*
+                File my_file = new File(fileName);
+
+                // This should send the file to browser
+                OutputStream out = response.getOutputStream();
+                FileInputStream in = new FileInputStream(my_file);
+                byte[] buffer = new byte[4096];
+                int length;
+                while ((length = in.read(buffer)) > 0){
+                    out.write(buffer, 0, length);
+                }
+                in.close();*/
+
+
+        return true;
     }
 }
