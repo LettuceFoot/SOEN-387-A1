@@ -136,7 +136,7 @@ public class ChatServlet extends HttpServlet {
             //temp.setClear("false");
 
             if(format.equals("text/xml")){
-                msg = ChatBean.printDb();
+                msg = "<div>" + ChatBean.printDb() + "</div>";
             }else{
                 msg = ChatBean.printTxt(from,to);
             }

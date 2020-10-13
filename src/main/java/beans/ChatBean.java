@@ -138,24 +138,24 @@ public class ChatBean implements java.io.Serializable {
 
                 if (userMsg.length() > 0) {
                     if (toDate.length() == 0 && fromDate.length() == 0) {
-                        out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                        out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                     }
 
                     if (toDate.length() != 0 && fromDate.length() == 0) {
                         if (userDateFormat.before(toDateFormat)){
-                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
 
                     if (toDate.length() == 0 && fromDate.length() != 0) {
                         if (userDateFormat.after(fromDateFormat)){
-                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
 
                     if (toDate.length() != 0 && fromDate.length() != 0){
                         if (userDateFormat.after(fromDateFormat) && userDateFormat.before(toDateFormat)){
-                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div><hr></div>";
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
                 }
