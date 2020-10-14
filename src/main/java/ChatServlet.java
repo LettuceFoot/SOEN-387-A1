@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Enumeration;
 
 @WebServlet(name = "ChatServlet")
 public class ChatServlet extends HttpServlet {
@@ -98,8 +99,34 @@ public class ChatServlet extends HttpServlet {
                 }
             }
 
+            //setting stylesheets
+            String stylesheet = "";
+
+            if (request.getParameter("stylesheet") != null) {
+                if (request.getParameter("stylesheet").equals("Chatapp-2.css")) {
+                    stylesheet = "Chatapp-2.css";
+                    System.out.println(stylesheet);
+                } else {
+                    stylesheet = "Chatapp.css";
+                    System.out.println(stylesheet);
+                }
+            } else {
+                stylesheet = "Chatapp.css";
+                System.out.println("null");
+            }
+
+            //checking for referer header
+            Enumeration<String> headerNames = request.getHeaderNames();
+            boolean refFound = false;
+            while(headerNames.hasMoreElements()) {
+                String headerName = headerNames.nextElement();
+                if (headerName.equals("referer")) {
+                    refFound = true;
+                }
+            }
+
             //send user back to front page in case of error
-            if (status_code == 4 || status_code == 5) {
+            if (status_code == 4 || status_code == 5 || refFound == false) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
                 request.setAttribute("error_message", "error encountered when attempting to post a message or setting date range please login again");
                 dispatcher.forward(request, response);
@@ -111,6 +138,7 @@ public class ChatServlet extends HttpServlet {
                 request.setAttribute("date", date);
                 request.setAttribute("fromDate", fromDate);
                 request.setAttribute("toDate", toDate);
+                request.setAttribute("stylesheet", stylesheet);
                 dispatcher.forward(request, response);
             }
         }
