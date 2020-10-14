@@ -11,7 +11,13 @@
     <meta charset="UTF-8">
     <title>ChatApp</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="Chatapp.css">
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="Chatapp.css">
+    <link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet'>
+    <script type="text/javascript">
+        function swapStyleSheet(sheet){
+            document.getElementById('pagestyle').setAttribute('href', sheet);
+        }
+    </script>
     <script src="https://kit.fontawesome.com/be7fa3ac62.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -29,10 +35,14 @@
             </li>
             <li class="nav-item">
             </li>
+            <li>
+                <button id="styleSwap" onclick="swapStyleSheet('Chatapp.css')">Default</button>
+                <button id="styleSwap" onclick="swapStyleSheet('Chatapp-2.css')">Second</button>
+            </li>
         </ul>
     </div>
     <div id="navbarTitle" class="mx-auto order-0 d-flex justify-content-center">
-        <a class="navbar-brand mx-auto " href="welcome.jsp">ChatApp</a>
+        <a class="navbar-brand mx-auto glitch" href="welcome.jsp"><span aria-hidden="true">Chatapp</span><span aria-hidden="true">Chatapp</span>Chatapp</a></a>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
@@ -104,19 +114,22 @@
                             </div>
                         </div>
                         <div>
-                            <span>Date Range:</span>
+                            <span class="answerSpan">Date Range:</span>
                             <div>
-                                <span>From:</span>
+                                <span class="answerSpan">From:</span>
                                 <input name="fromDate" value="<%if (chat.getFromDate() != null) {%><%= chat.getFromDate() %><%}%>" placeholder="d-m-y hh:mm:ss">
                             </div>
                             <div>
-                                <span>To:</span>
+                                <span class="answerSpan">To:</span>
                                 <input name="toDate" value="<%if (chat.getToDate() != null) {%><%= chat.getToDate()%><%}%>" placeholder="d-m-y hh:mm:ss">
                             </div>
                             <input id="setDateRangebtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="setDateRange">
                         </div>
-                        <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Clear">
-                        <input id="refreshBtn" class="chatButtons btn btn-outline-dark btn-lg" type="submit" name="chatAction" value="Refresh">
+                        <div>
+                            <input id="clearBtn" class="chatButtons btn btn-outline-dark btn-lg " type="submit" name="chatAction" value="Clear">
+                            <input id="refreshBtn" class="chatButtons btn btn-outline-dark btn-lg " type="submit" name="chatAction" value="Refresh">
+                        </div>
+
                     </div>
                 </form>
             </div>
