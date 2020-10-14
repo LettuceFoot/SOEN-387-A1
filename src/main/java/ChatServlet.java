@@ -14,8 +14,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @WebServlet(name = "ChatServlet")
 public class ChatServlet extends HttpServlet {
@@ -45,8 +48,6 @@ public class ChatServlet extends HttpServlet {
                 userName = "anonymous";
             }
 
-            System.out.println(userName);
-
             //getting date of the message
             LocalDateTime dateTimeObj = LocalDateTime.now();
             DateTimeFormatter formatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -57,6 +58,8 @@ public class ChatServlet extends HttpServlet {
             if (chatAction != null) {
                 if (chatAction.equals("Clear")) {
                     request.setAttribute("clear", "True");
+                    fromDate = request.getParameter("fromDate");
+                    toDate = request.getParameter("toDate");
                 } else {
                     request.setAttribute("clear", "False");
                 }
@@ -68,7 +71,6 @@ public class ChatServlet extends HttpServlet {
                 }
             }
 
-
             //checking status code for errors
             int status_code = response.getStatus();
             //get first digit of the status code
@@ -76,9 +78,30 @@ public class ChatServlet extends HttpServlet {
                 status_code /= 10;
             }
 
+            //error checking for invalid from and to dates
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date fromDateFormat = null;
+            Date toDateFormat = null;
+
+            try {
+                if (fromDate.length() != 0)
+                    fromDateFormat = simpleDateFormat.parse(fromDate);
+                if (toDate.length() != 0)
+                    toDateFormat = simpleDateFormat.parse(toDate);
+            } catch(ParseException e) {
+                System.out.println("help me please");
+            }
+
+            if (fromDateFormat != null && toDateFormat != null) {
+                if (toDateFormat.before(fromDateFormat) || fromDateFormat.after(toDateFormat)){
+                    status_code = 4;
+                }
+            }
+
+            //send user back to front page in case of error
             if (status_code == 4 || status_code == 5) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
-                request.setAttribute("error_message", "error encountered when attempting to post a message please login again");
+                request.setAttribute("error_message", "error encountered when attempting to post a message or setting date range please login again");
                 dispatcher.forward(request, response);
             }else {
                 //send response to front-end

@@ -98,7 +98,8 @@ public class ChatBean implements java.io.Serializable {
         return clear;
     }
 
-    public void setdb(List<String> in){this.db = in;}
+    public static void setdb(List<String> in){
+        db = in;}
     public List<String> getDb(){return this.db;}
 
     //public void setDateDB(List<Date> in){this.dateDB = in;}
@@ -142,13 +143,13 @@ public class ChatBean implements java.io.Serializable {
                     }
 
                     if (toDate.length() != 0 && fromDate.length() == 0) {
-                        if (userDateFormat.before(toDateFormat)){
+                        if (userDateFormat.before(toDateFormat) || !userDateFormat.after(toDateFormat) ){
                             out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
 
                     if (toDate.length() == 0 && fromDate.length() != 0) {
-                        if (userDateFormat.after(fromDateFormat)){
+                        if (userDateFormat.after(fromDateFormat) || !userDateFormat.before(fromDateFormat) ){
                             out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
@@ -156,12 +157,82 @@ public class ChatBean implements java.io.Serializable {
                     if (toDate.length() != 0 && fromDate.length() != 0){
                         if (userDateFormat.after(fromDateFormat) && userDateFormat.before(toDateFormat)){
                             out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
+                        }else if (!userDateFormat.before(fromDateFormat) && userDateFormat.before(toDateFormat)) {
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
+                        }else if (userDateFormat.after(fromDateFormat) && !userDateFormat.after(toDateFormat)) {
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
+                        }else if (fromDateFormat.compareTo(toDateFormat) == 0 && !userDateFormat.after(toDateFormat) && !userDateFormat.before(fromDateFormat)) {
+                            out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
                         }
                     }
                 }
             }
         }else {
-            db.clear();
+            List<String> tempDb = new ArrayList<String>();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date fromDateFormat = null;
+            Date toDateFormat = null;
+            Date userDateFormat = null;
+
+            try {
+                if (fromDate.length() != 0)
+                    fromDateFormat = simpleDateFormat.parse(getFromDate());
+                if (toDate.length() != 0)
+                    toDateFormat = simpleDateFormat.parse(getToDate());
+            } catch(ParseException e) {
+                System.out.println("help me please");
+            }
+
+            for(int i=0; i<db.size(); i++) {
+                temp = db.get(i);
+
+                String userDate = temp.substring(0, temp.indexOf("Username:"));
+                userDate = userDate.replace("Date: ", "");
+
+                try {
+                    userDateFormat = simpleDateFormat.parse(userDate);
+                } catch(ParseException e) {
+                    System.out.println("help me please");
+                }
+
+                if (fromDateFormat == null && toDateFormat == null) {
+                    db.clear();
+                } else if (fromDateFormat != null && toDateFormat == null) {
+                    if (userDateFormat.after(fromDateFormat) || !userDateFormat.before(fromDateFormat))
+                        tempDb.add(db.get(i));
+                } else if (fromDateFormat == null && toDateFormat != null) {
+                    if (userDateFormat.before(toDateFormat) || !userDateFormat.after(toDateFormat) )
+                        tempDb.add(db.get(i));
+                } else if (fromDateFormat != null && toDateFormat != null) {
+                    if (userDateFormat.after(fromDateFormat) && userDateFormat.before(toDateFormat)){
+                        tempDb.add(db.get(i));
+                    }else if (!userDateFormat.before(fromDateFormat) && userDateFormat.before(toDateFormat)) {
+                        tempDb.add(db.get(i));
+                    }else if (userDateFormat.after(fromDateFormat) && !userDateFormat.after(toDateFormat)) {
+                        tempDb.add(db.get(i));
+                    }else if (fromDateFormat.compareTo(toDateFormat) == 0 && !userDateFormat.after(toDateFormat) && !userDateFormat.before(fromDateFormat)) {
+                        tempDb.add(db.get(i));
+                    }
+                }
+            }
+
+            //set databas to updated database with cleared messages
+            setdb(tempDb);
+
+            for(int i=0; i<db.size(); i++){
+                temp = db.get(i);
+
+                String userName = temp.substring(temp.indexOf("Username: "), temp.indexOf("Message: "));
+                userName = userName.replace("Username: ", "");
+
+                String userMsg = temp.substring(temp.indexOf("Message: "));
+                userMsg = userMsg.replace("Message: ", "");
+
+                String userDate = temp.substring(0, temp.indexOf("Username:"));
+                userDate = userDate.replace("Date: ", "");
+
+                out += "<div class=\"card\"><h4>" + userName + "</h4><div class=\"card-body\">" + userMsg + "</div><div class=\"card-date\">" + userDate + "</div></div>";
+            }
         }
 
         return out;
@@ -229,8 +300,10 @@ public class ChatBean implements java.io.Serializable {
             }else{
                if(fromTo){
                    return i;
-               }else{
-                   return i-1;
+               }else if (userDate.compareTo(msgDate) == 0){
+                   return i;
+               }else {
+                   return i - 1;
                }
             }
 
